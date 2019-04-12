@@ -1,0 +1,22 @@
+{
+  "name": "games-reloaded",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjcolo28/games-reloaded.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjcolo28/games-reloaded/issues"
+  },
+  "homepage": "https://github.com/rjcolo28/games-reloaded#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
