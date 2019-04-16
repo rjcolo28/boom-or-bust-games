@@ -16,7 +16,7 @@ function Card() {
                  Lorem Ipsum has been the industry's standard dummy text...</p>
             </div>
             <div className="card-action">
-              <a href="http://www.freetimelearning.com" target="_blank" className="btn blue">Free Time Learn</a>
+              <a href="http://www.freetimelearning.com"  className="btn blue">Free Time Learn</a>
             </div>
             <div className="card-reveal">
               <span className="card-title grey-text text-darken-4">Free Time Learning<i className="material-icons right">close</i></span>
@@ -37,7 +37,7 @@ function Card() {
                  Lorem Ipsum has been the industry's standard dummy text...</p>
             </div>
             <div className="card-action">
-              <a href="http://www.freetimelearning.com" target="_blank" className="btn blue">Free Time Learn</a>
+              <a href="http://www.freetimelearning.com"  className="btn blue">Free Time Learn</a>
             </div>
             <div className="card-reveal">
               <span className="card-title grey-text text-darken-4">Free Time Learning<i className="material-icons right">close</i></span>
@@ -58,7 +58,7 @@ function Card() {
                  Lorem Ipsum has been the industry's standard dummy text...</p>
             </div>
             <div className="card-action">
-              <a href="http://www.freetimelearning.com" target="_blank" className="btn blue">Free Time Learn</a>
+              <a href="http://www.freetimelearning.com"  className="btn blue">Free Time Learn</a>
             </div>
             <div className="card-reveal">
               <span className="card-title grey-text text-darken-4">Free Time Learning<i className="material-icons right">close</i></span>
