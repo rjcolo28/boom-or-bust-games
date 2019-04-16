@@ -15,7 +15,7 @@ function Nav (){
                 </div>
             </form>
             <ul className="right hide-on-med-and-down">
-              <li><a href="#">Sign Up/Log In</a></li>
+              <li><a href="">Sign Up/Log In</a></li>
             </ul>
           </div>
         </nav>

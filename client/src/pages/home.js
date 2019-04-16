@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../components/navbar/index";
+import Card from "../components/game card/index"
 
 const jumbotronStyle = {
   paddingBottom: '150px',
@@ -23,7 +24,16 @@ class Home extends Component {
 
   render() {
     return (
-     <Nav />
+      <div>
+         <Nav />
+         <div className="card-panel grey lighten-2" style={jumbotronStyle}>
+        <div className="container">
+          <h1>Welcome</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur...</p>
+        </div>
+       </div>
+       < Card/>
+      </div>
     );
   }
 }
