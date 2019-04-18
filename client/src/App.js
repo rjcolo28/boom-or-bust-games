@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-// import Home from "./pages/home";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./pages/home";
 import Signup from "./pages/signup";
+import UserPage from "./pages/userpage";
 
 class App extends Component {
-state = {
+  state = {
     data: null
   };
 
@@ -13,7 +15,7 @@ state = {
   //     .then(res => this.setState({ data: res.express }))
   //     .catch(err => console.log(err));
   // }
-    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   // callBackendAPI = async () => {
   //   const response = await fetch('/express_backend');
   //   const body = await response.json();
@@ -26,9 +28,13 @@ state = {
 
   render() {
     return (
-     <div>
-       <Signup />
-     </div>
+      <Router>
+        <div>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/Userpage" component={UserPage} />
+        </div>
+      </Router>
     );
   }
 }
