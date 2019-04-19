@@ -9,30 +9,32 @@ const jumbotronStyle = {
 
 class Home extends Component {
   // state = {
-   
+
   // };
 
   // componentDidMount() {
-   
+
   // }
 
-//   loadBooks = () => {
-//     API.getBooks()
-//       .then(res => this.setState({ books: res.data }))
-//       .catch(err => console.log(err));
-//   };
+  //   loadBooks = () => {
+  //     API.getBooks()
+  //       .then(res => this.setState({ books: res.data }))
+  //       .catch(err => console.log(err));
+  //   };
 
   render() {
     return (
       <div>
-         <Nav />
-         <div className="card-panel grey lighten-2" style={jumbotronStyle}>
-        <div className="container">
-          <h1>Welcome</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur...</p>
+        <Nav />
+        <div className="card-panel grey lighten-2" style={jumbotronStyle}>
+          <div className="container">
+            <h1>Welcome</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur...</p>
+          </div>
         </div>
-       </div>
-       < Card/>
+        < Card />
+        <Card />
+        <Card />
       </div>
     );
   }
