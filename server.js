@@ -2,11 +2,13 @@ const express = require('express');
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+var axios = require("axios");
+var db = require("./models");
 const port = process.env.PORT || 4000;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(routes);
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(routes);
 
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
