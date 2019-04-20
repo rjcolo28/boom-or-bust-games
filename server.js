@@ -2,13 +2,19 @@ const express = require('express');
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
-var axios = require("axios");
-var db = require("./models");
+var logger = require("morgan");
 const port = process.env.PORT || 4000;
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-// app.use(routes);
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(routes);
+
+app.use(logger("dev"));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));

@@ -2,15 +2,14 @@ const router = require("express").Router();
 const reviewsController = require("../../controllers/reviewController");
 
 
-router.route("/api/reviews")
+router.route("/reviews")
   .get(reviewsController.findAll)
   .post(reviewsController.create);
 
 
 router
-  .route("/api/reviews/:id")
-  .get(reviewsController.findById)
+  .route("/reviews/:id")
   .put(reviewsController.update)
-  .delete(reviewsController.remove);
+  .delete(reviewsController.delete);
 
 module.exports = router;
