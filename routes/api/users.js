@@ -1,15 +1,13 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/userController");
 
-
-router.route("/api/users")
-  .get(usersController.findAll)
+router.route("/users")
   .post(usersController.create);
 
 
 router
-  .route("/api/users/:id")
+  .route("/users/:id")
   .put(usersController.update)
-  .delete(usersController.remove);
+  .delete(usersController.delete);
 
 module.exports = router;

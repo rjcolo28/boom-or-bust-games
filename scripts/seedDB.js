@@ -1,12 +1,20 @@
-// var query = {
-//   url: "https://api-v3.igdb.com/games/?search=&fields=id,name,platforms.name,summary&limit=50",
-//   method: "get",
-//   headers: {
-//     "user-key" : "f651128b84c8c321e546f8de828f875b"
-//   }
-// }
+const mongoose = require("mongoose");
+const db = require("../models");
 
-// axios(query)
-//       .then(function(response) {
-//         console.log(response.data);
-//     });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/games-reloaded", { useNewUrlParser: true });
+
+const userSeed = [
+    {
+        username: "butjonDoe123",
+        password: "deerMan45",
+        email: "jondoe@email.com",
+    },
+];
+
+db.User.create(userSeed)
+    .then(function(dbUser) {
+        console.log(dbUser)
+    })
+    .catch(function(err) {
+        console.log(err)
+    });
