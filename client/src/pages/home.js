@@ -33,8 +33,6 @@ class Home extends Component {
           </div>
         </div>
         < Card />
-        <Card />
-        <Card />
       </div>
     );
   }
