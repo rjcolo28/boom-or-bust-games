@@ -8,19 +8,6 @@ const jumbotronStyle = {
 }
 
 class Home extends Component {
-  // state = {
-
-  // };
-
-  // componentDidMount() {
-
-  // }
-
-  //   loadBooks = () => {
-  //     API.getBooks()
-  //       .then(res => this.setState({ books: res.data }))
-  //       .catch(err => console.log(err));
-  //   };
 
   render() {
     return (

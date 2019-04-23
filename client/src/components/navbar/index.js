@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Nav (){
@@ -6,7 +7,11 @@ function Nav (){
         <div className="navbar-fixed">
         <nav>
           <div className="nav-wrapper">
-          <a href="#!" className="brand-logo">Logo</a>
+          <a href="#!" className="brand-logo">
+           <Link Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+            Logo
+           </Link>
+          </a>
           <form action="" method="post">
                 <div className="input-field">
                     <input id="search" type="search" name="search"></input>
@@ -15,7 +20,11 @@ function Nav (){
                 </div>
             </form>
             <ul className="right hide-on-med-and-down">
-              <li><a href="">Sign Up/Log In</a></li>
+              <li>
+                <Link Link to="/signup" className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}>
+                  SignUp
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>
