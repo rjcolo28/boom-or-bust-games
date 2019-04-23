@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const GameSchema = new Schema ({
-    api_id: { type: Number, required: true },
-    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
-    userRating: { type: Number },
-    overallRating: { type: Number }
+    title: { type: String, required: true },
+    platforms: { type: Array },
+    genre: { type: String },
+    image: { type: String },
+    summary: { type: String, required: true },
+    reviews: [ { type: Schema.Types.ObjectId, ref: "Review" } ]
 })
 
 const Game = mongoose.model("Game", GameSchema);
