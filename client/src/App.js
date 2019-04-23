@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Signup from "./pages/signup";
 import UserPage from "./pages/userpage";
+import GamePage from "./pages/game";
 
 class App extends Component {
   state = {
@@ -32,7 +33,8 @@ class App extends Component {
         <div>
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/Userpage" component={UserPage} />
+          <Route exact path="/userpage" component={UserPage} />
+          <Route exact path="/gamepage" component={GamePage} />
         </div>
       </Router>
     );
