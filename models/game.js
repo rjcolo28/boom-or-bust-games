@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const GameSchema = new Schema ({
     title: { type: String, required: true },
     platforms: { type: Array },
-    genre: { type: String },
+    genres: { type: String },
     image: { type: String },
     summary: { type: String, required: true },
     reviews: [ { type: Schema.Types.ObjectId, ref: "Review" } ]
