@@ -11,9 +11,9 @@ function UserInfo() {
                 <div className="col s6" id="c1">
                     <h2 id="username">Username</h2>
                     <div id="buttons">
-                        <a class="waves-effect waves-light btn-large">Want</a>
-                        <a class="waves-effect waves-light btn-large">Playing</a>
-                        <a class="waves-effect waves-light btn-large">Played</a>
+                        <a href="/want" class="waves-effect waves-light btn-large">Want</a>
+                        <a href="/playing" class="waves-effect waves-light btn-large">Playing</a>
+                        <a href="/played" class="waves-effect waves-light btn-large">Played</a>
                     </div>
                 </div>
             </div>

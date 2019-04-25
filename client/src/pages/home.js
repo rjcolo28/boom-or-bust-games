@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Nav from "../components/navbar/index";
 import Card from "../components/game card/index"
 
+
 const jumbotronStyle = {
   paddingBottom: '150px',
   boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)"
