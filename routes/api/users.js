@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/userController");
 
-router.route("/users")
+router.route("/")
   .post(usersController.create);
 
 
 router
-  .route("/users/:id")
+  .route("/:id")
   .put(usersController.update)
   .delete(usersController.delete);
 

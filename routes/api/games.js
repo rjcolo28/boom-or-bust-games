@@ -2,11 +2,11 @@ const router = require("express").Router();
 const gamesController = require("../../controllers/gameController");
 
 
-router.route("/games")
+router.route("/")
   .get(gamesController.findAll)
 
 router
-  .route("/games/:id")
+  .route("/:id")
   .get(gamesController.findById)
   .put(gamesController.update)
 
