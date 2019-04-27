@@ -5,7 +5,7 @@ const ReviewSchema = new Schema (
     {
         game: { type: Schema.Types.ObjectId, ref: "Game" },
         posted: { type: Date, default: Date.now },
-        author: [ { type: Schema.Types.ObjectId, ref: "User"} ],
+        author: { type: Schema.Types.ObjectId, ref: "User" },
         review: { type: String, required: true }
     }
 );
