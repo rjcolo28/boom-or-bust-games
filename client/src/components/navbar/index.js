@@ -27,7 +27,7 @@ class Nav extends Component {
                 </a>
               </li>
               <li>
-                <a href="#" >Log In</a>
+                <a href="/login" >Log In</a>
               </li>
             </ul>
           </div>
