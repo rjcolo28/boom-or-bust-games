@@ -1,10 +1,10 @@
-.row .col.s6 {
+#loginForm{
     width: 50%;
     margin-left: 50%;
     left: auto;
     right: auto;
 }
 
-div.row{
+#top{
     margin-top: 200px;
 }

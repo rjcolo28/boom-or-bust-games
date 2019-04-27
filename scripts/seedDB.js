@@ -5,9 +5,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/games-reloaded"
 
 const userSeed = [
     {
-        username: "butjonDoe123",
-        password: "deerMan45",
-        email: "jondoe@email.com",
+        username: "abcde",
+        password: "1234",
+        email: "abcde@outlook.com",
     },
 ];
 
