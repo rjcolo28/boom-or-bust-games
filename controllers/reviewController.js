@@ -9,10 +9,12 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     create: function(req, res) {
+        console.log(req.body);
         db.Review
-          .insert(req.body)
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
+            .create(req.body)
+            .then(dbReview => db.Game.findOneAndUpdate({ _id: req.body.game_id }, { $push: { reviews: dbReview._id } }, { new: true }))
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     },
     update: function(req, res) {
         db.Review
