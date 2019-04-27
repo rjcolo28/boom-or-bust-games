@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import Card from "../game card/index"
+import Card from "../game card"
 
 function UserInfo() {
     return (

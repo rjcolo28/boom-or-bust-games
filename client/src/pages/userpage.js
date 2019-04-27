@@ -11,7 +11,7 @@ class UserPage extends Component {
             <div>
                 <Nav />
                 <UserInfo />
-               <UserReview/>
+                <UserReview/>
             </ div>
         );
     }
