@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Signup from "./pages/signup";
 import UserPage from "./pages/userpage";
 import GamePage from "./pages/game";
+import Login from "./pages/logIn";
 
 class App extends Component {
   state = {
@@ -33,6 +34,7 @@ class App extends Component {
         <div>
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login}/>
           <Route exact path="/userpage/:id" component={UserPage} />
           <Route exact path="/games/:id" component={GamePage} />
         </div>
