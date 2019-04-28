@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 import "./styles.css";
+import Api from "../../utils/API";
 
 class Form extends Component {
     constructor() {
@@ -13,12 +14,12 @@ class Form extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-    handleChange = event => {
+    handleChange(event){
         this.setState({
             [event.target.name]: event.target.value
         })
     }
-    handleSubmit = event => {
+    handleSubmit(event){
         event.preventDefault();
         console.log(this.state.username);
 
@@ -48,24 +49,24 @@ class Form extends Component {
                     <form className="col s12">
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="Username" type="text" className="validate" value={this.state.username} onChange={this.handleChange}></input>
+                                <input id="Username" type="text" className="validate" name= "username" value={this.state.username} onChange={this.handleChange}></input>
                                 <label htmlFor="Username">Username</label>
 
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="password" type="password" className="validate" value={this.state.password} onChange={this.handleChange}></input>
+                                <input id="password" type="password" className="validate" name="password" value={this.state.password} onChange={this.handleChange}></input>
                                 <label htmlFor="password">Password</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="confirm" type="email" className="validate" value={this.state.confirmPassword} onChange={this.handleChange}></input>
+                                <input id="confirm" type="email" className="validate" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange}></input>
                                 <label htmlFor="confirm">Confirm Password</label>
                             </div>
                         </div>
-                        <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <button className="btn waves-effect waves-light" type="submit" name="action" onclick={this.handleSubmit}>Submit
                                 <i className="material-icons right">send</i>
                         </button>
                     </form>
