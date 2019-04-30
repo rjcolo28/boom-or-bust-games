@@ -13,12 +13,12 @@ module.exports = {
           .then(dbGame => res.json(dbGame))
           .catch(err => res.status(422).json(err));
       },
-    // find all games and populate them with their reviews  
+    // find specific game and populate it with saved reviews  
     populate: function(req, res) {
         db.Game
-          .find({})
+          .findById({ _id: req.params.id })
           .populate("reviews")
-          .then(dbGame => res.json(dbGame))
+          .then(results => console.log(results))
           .catch(err => res.status(422).json(err));
     }
 }

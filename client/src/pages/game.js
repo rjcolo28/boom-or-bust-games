@@ -11,12 +11,13 @@ class GamePage extends Component {
 
     state = {
         game: {},
+        reviews: [],
         review: ""
     }
 
     loadGame = () => {
         API.getGame(this.props.match.params.id)
-            .then(res => this.setState({ game: res.data }))
+            .then(res => console.log(res.data.reviews))
             .catch(err => console.log(err));
     };
 
