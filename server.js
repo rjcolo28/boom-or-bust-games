@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require("mongoose");
-const router = require("./routes");
+const routes = require("./routes");
 const app = express();
 var logger = require("morgan");
 const port = process.env.PORT || 5000;
@@ -8,7 +8,7 @@ require("dotenv").config()
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(router);
+app.use(routes);
 
 app.use(logger("dev"));
 
@@ -18,7 +18,6 @@ if (process.env.NODE_ENV === "production") {
 
 // console.log that server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/games-reloaded");
 
