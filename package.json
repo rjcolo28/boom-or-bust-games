@@ -38,10 +38,11 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "react-awesome-modal": "^2.0.5",
-    "react-materialize": "^3.1.1"
-  },
-  "devDependencies": {
+    "react-materialize": "^3.1.1",
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.7"
+  },
+  "devDependencies": {
+    
   }
 }
