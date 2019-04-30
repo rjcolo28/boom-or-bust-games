@@ -14,7 +14,7 @@ export default {
         return axios.get("/api/games/populate/" + id);
     },
     getReview: function(id) {
-        return axios.get("/api/reviews" + id);
+        return axios.get("/api/reviews/" + id);
     },
     submitReview: function(reviewData) {
         return axios.post("/api/reviews", reviewData);
