@@ -18,7 +18,7 @@ module.exports = {
         db.Game
           .findById({ _id: req.params.id })
           .populate("reviews")
-          .then(results => console.log(results))
+          .then(results => res.json(results))
           .catch(err => res.status(422).json(err));
     }
 }

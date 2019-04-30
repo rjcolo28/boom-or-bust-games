@@ -17,12 +17,19 @@ class GamePage extends Component {
 
     loadGame = () => {
         API.getGame(this.props.match.params.id)
-            .then(res => console.log(res.data.reviews))
+            .then(res => this.setState({ game: res.data }))
+            .catch(err => console.log(err));
+    };
+
+    loadReviews = () => {
+        API.getReviews(this.props.match.params.id)
+            .then(res => this.setState({ reviews: res.data.reviews} ))
             .catch(err => console.log(err));
     };
 
     componentDidMount() {
         this.loadGame()
+        this.loadReviews()
     }
 
     handleInputChange = event => {
@@ -70,9 +77,13 @@ class GamePage extends Component {
                     />
                 </form>
                 <br></br>
-                <GameReviews
-                    reviews={this.state.game.reviews}
-                />
+                {this.state.reviews.map(review =>
+                    <GameReviews
+                        id={review._id}
+                        key={review._id}
+                        review={review.review}
+                    />
+                )}
             </ div>
         );
     }

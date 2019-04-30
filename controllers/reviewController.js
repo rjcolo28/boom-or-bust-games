@@ -1,4 +1,5 @@
 const db = require("../models");
+const games = require("./gameController");
 
 module.exports = {
     findAll: function(req, res) {

@@ -18,7 +18,6 @@ class Home extends Component {
   componentDidMount() {
     API.getGames(this.props)
       .then(res => this.setState({ games: res.data }))
-      .then(res => console.log(res.data))
       .catch(err => console.log(err));
   };
 
