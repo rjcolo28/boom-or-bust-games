@@ -4,7 +4,7 @@ const router = require("./routes");
 const app = express();
 var logger = require("morgan");
 const port = process.env.PORT || 5000;
-
+require("dotenv").config()
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,9 +19,8 @@ if (process.env.NODE_ENV === "production") {
 // console.log that server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/games-reloaded";
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/games-reloaded");
 
 // GET route to know server is connected
 app.get('/express_backend', (req, res) => {
