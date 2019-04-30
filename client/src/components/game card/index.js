@@ -12,7 +12,7 @@ function Card(props) {
               <span className="card-title activator grey-text text-darken-4">{props.title}<i className="material-icons right">more_vert</i></span>
             </div>
             <div className="card-action">
-              <a href="http://www.freetimelearning.com"  className="btn blue">Free Time Learn</a>
+              <a href={"/games/" + props.id }  className="btn blue">Free Time Learn</a>
             </div>
             <div className="card-reveal">
               <span className="card-title grey-text text-darken-4">Free Time Learning<i className="material-icons right">close</i></span>

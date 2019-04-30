@@ -11,6 +11,7 @@ class GamePage extends Component {
 
     state = {
         game: {},
+        reviews: [],
         review: ""
     }
 
@@ -20,8 +21,15 @@ class GamePage extends Component {
             .catch(err => console.log(err));
     };
 
+    loadReviews = () => {
+        API.getReviews(this.props.match.params.id)
+            .then(res => this.setState({ reviews: res.data.reviews} ))
+            .catch(err => console.log(err));
+    };
+
     componentDidMount() {
         this.loadGame()
+        this.loadReviews()
     }
 
     handleInputChange = event => {
@@ -69,9 +77,13 @@ class GamePage extends Component {
                     />
                 </form>
                 <br></br>
-                <GameReviews
-                    reviews={this.state.game.reviews}
-                />
+                {this.state.reviews.map(review =>
+                    <GameReviews
+                        id={review._id}
+                        key={review._id}
+                        review={review.review}
+                    />
+                )}
             </ div>
         );
     }

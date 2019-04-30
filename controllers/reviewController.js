@@ -1,18 +1,19 @@
 const db = require("../models");
+const games = require("./gameController");
 
 module.exports = {
     findAll: function(req, res) {
         db.Review
             .find(req.query)
             .sort({ date: -1 })
-            .then(dbReview => res.json(dbReview))
+            .then(dbReview => console.log(dbReview))
             .catch(err => res.status(422).json(err))
     },
     // saving new review and associating it with a game
     create: function(req, res) {
         db.Review
             .create(req.body)
-            .then(dbReview => db.Game.findOneAndUpdate({ _id: req.body.game_id }, { $push: { reviews: dbReview.review }}, { new: true }))
+            .then(dbReview => db.Game.findOneAndUpdate({ _id: req.body.game_id }, { $push: { reviews: dbReview._id }}, { new: true }))
             .then(dbGame => res.json(dbGame))
             .catch(err => res.status(422).json(err));
     },
