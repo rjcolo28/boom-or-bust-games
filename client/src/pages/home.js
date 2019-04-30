@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Nav from "../components/navbar/index";
 import Card from "../components/game card/index"
 import API from "../utils/API";
+import axios from "axios";
 
 
 const jumbotronStyle = {
@@ -10,17 +11,50 @@ const jumbotronStyle = {
 }
 
 class Home extends Component {
+  constructor() {
+    super()
+    this.state = {
+      loggedIn: false,
+      username: null,
+      games: []
+    }
 
-  state = {
-    games: []
+    this.getUser = this.getUser.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.updateUser = this.updateUser.bind(this)
   }
 
   componentDidMount() {
+    this.getUser();
     API.getGames(this.props)
-      .then(res => this.setState({ games: res.data }))
-      .catch(err => console.log(err));
-  };
+    .then(res => this.setState({ games: res.data }))
+    .catch(err => console.log(err));
+  }
 
+  updateUser (userObject) {
+    this.setState(userObject)
+  }
+
+  getUser() {
+    axios.get('/user/').then(response => {
+      console.log('Get user response: ')
+      console.log(response.data)
+      if (response.data.user) {
+        console.log('Get User: There is a user saved in the server session: ')
+
+        this.setState({
+          loggedIn: true,
+          username: response.data.user.username
+        })
+      } else {
+        console.log('Get user: no user');
+        this.setState({
+          loggedIn: false,
+          username: null
+        })
+      }
+    })
+  }
   render() {
     return (
       <div>

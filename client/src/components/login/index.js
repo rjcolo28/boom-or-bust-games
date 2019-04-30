@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios"
 import "./styles.css";
+import API from "../../utils/API";
 
 
 class loginForm extends Component {
@@ -57,11 +58,11 @@ class loginForm extends Component {
                     <form className="col s6" id="loginForm">
                         <h1>Log In</h1>
                         <div className="input-field col s12">
-                            <input id="Username" type="text" className="validate" required=""></input>
+                            <input id="Username" type="text" className="validate"  value= {this.state.username} onChange={this.handleChange} name="username"></input>
                             <label htmlFor="Username">Username</label>
                         </div>
                         <div className="input-field col s12">
-                            <input id="Password" type="password" className="validate" required=""></input>
+                            <input id="Password" type="password" className="validate" value= {this.state.password} onChange={this.handleChange} name="password"></input>
                             <label htmlFor="Password">Password</label>
                         </div>
 
