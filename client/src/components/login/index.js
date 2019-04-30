@@ -1,21 +1,52 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import axios from "axios"
 import "./styles.css";
-import API from "../../utils/API";
-
+import {
+    getFromStorage,
+    setInStorage
+} from "../../utils/storage";
 
 class loginForm extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             username: "",
             password: "",
-            RedirectTo: null
+            RedirectTo: null,
+            signInError: "",
+            isLoading: ""
         }
         this.handleFormSubmition = this.handleFormSubmition.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
+
+    componentDidMount() {
+        const obj = getFromStorage("main_app");
+        if (obj && obj.token) {
+            const {token} = obj;
+            //   verity token
+            fetch("/api/account/verify?token=" + token)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success) {
+                        this.setState({
+                            token: token,
+                            isLoading: false
+                        })
+                    } else {
+                        this.setState({
+                            isLoading: false
+                        })
+                    }
+                })
+        }
+        else {
+            this.setState({
+                isLoading: false,
+            })
+        }
+    }
+
     handleChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -24,29 +55,38 @@ class loginForm extends Component {
 
     handleFormSubmition = event => {
         event.preventDefault();
-        // console.log("hi")
-        axios.post("/user/login", {
-            username: this.state.username,
-            password: this.state.password
-        }).then(response => {
-            console.log('login response: ')
-            console.log(response)
-            if (response.status === 200) {
-                // update App.js state
-                this.props.updateUser({
-                    loggedIn: true,
-                    username: response.data.username
-                })
-                // update the state to redirect to home
-                this.setState({
-                    redirectTo: '/'
-                })
-            }
-        }).catch(error => {
-            console.log('login error: ')
-            console.log(error);
-
-        })
+        // grab state
+        const {
+            signUpPassword,
+            signUpUsername
+        } = this.state;
+        // post request to back end
+        fetch("/api/account/signin", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: signUpUsername,
+                password: signUpPassword
+            }),
+        }).then(res => res.json())
+            .then(json => {
+                if (json.success) {
+                    setInStorage("main_app", { token: json.token })
+                    this.setState({
+                        signUpError: json.message,
+                        isLoading: false,
+                        username: "",
+                        password: "",
+                    })
+                } else {
+                    this.setState({
+                        signUpError: json.message,
+                        isLoading: false,
+                    })
+                }
+            })
     }
 
     render() {
@@ -58,18 +98,18 @@ class loginForm extends Component {
                     <form className="col s6" id="loginForm">
                         <h1>Log In</h1>
                         <div className="input-field col s12">
-                            <input id="Username" type="text" className="validate"  value= {this.state.username} onChange={this.handleChange} name="username"></input>
+                            <input id="Username" type="text" className="validate" value={this.state.username} onChange={this.handleChange} name="username"></input>
                             <label htmlFor="Username">Username</label>
                         </div>
                         <div className="input-field col s12">
-                            <input id="Password" type="password" className="validate" value= {this.state.password} onChange={this.handleChange} name="password"></input>
+                            <input id="Password" type="password" className="validate" value={this.state.password} onChange={this.handleChange} name="password"></input>
                             <label htmlFor="Password">Password</label>
                         </div>
 
                         <button className="btn waves-effect waves-light" type="submit" name="action" onClick={this.handleFormSubmition}>Log In
                         <i className="material-icons right">send</i>
                         </button>
-                    </form> 
+                    </form>
                 </div>
             );
         }

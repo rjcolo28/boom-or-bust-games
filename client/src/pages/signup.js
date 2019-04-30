@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Nav from "../components/navbar/index";
 import Form from "../components/form/index";
 
+
 // Allie changed to class SignUp (used to be Home...was confusing...lol)
 
 // i was using a modal before for the sign up 
@@ -13,6 +14,7 @@ import Form from "../components/form/index";
 // ok
 
 class SignUp extends Component {
+  
     render() {
         return (
             <div>
