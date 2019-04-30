@@ -3,11 +3,13 @@ const router = express.Router()
 const User = require('../../models/user')
 const passport = require('../passport')
 
-router.post('/', (req, res) => {
+// here's the signup route, with validation, yup
+router.post('/newUser', (req, res) => {
   console.log('user signup');
 
   const { username, password } = req.body
-  // ADD VALIDATION
+  
+  // validation
   User.findOne({ username: username }, (err, user) => {
       if (err) {
           console.log('User.js post error: ', err)

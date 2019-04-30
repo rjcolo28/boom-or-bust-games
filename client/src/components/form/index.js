@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import "./styles.css";
-import Api from "../../utils/API";
+import API from "../../utils/API";
 
 class Form extends Component {
     constructor() {
@@ -23,7 +23,7 @@ class Form extends Component {
         event.preventDefault();
         console.log(this.state.username);
 
-        axios.post("user/", {
+        axios.post("/newUser", {
             username: this.state.username,
             password: this.state.password
         }).then(response => {
@@ -62,11 +62,11 @@ class Form extends Component {
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="confirm" type="email" className="validate" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange}></input>
+                                <input id="confirm" type="password  " className="validate" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange}></input>
                                 <label htmlFor="confirm">Confirm Password</label>
                             </div>
                         </div>
-                        <button className="btn waves-effect waves-light" type="submit" name="action" onclick={this.handleSubmit}>Submit
+                        <button className="btn waves-effect waves-light" type="submit" name="action" onClick={this.handleSubmit}>Submit
                                 <i className="material-icons right">send</i>
                         </button>
                     </form>

@@ -12,7 +12,7 @@ module.exports = {
         console.log(req.body);
         db.Review
             .create(req.body)
-            .then(dbReview => db.Game.findOneAndUpdate({ _id: req.body.game_id }, { $push: { reviews: dbReview._id } }, { new: true }))
+            .then(dbReview => db.Game.findOneAndUpdate({ _id: req.body.game_id }, { $push: { reviews: dbReview._idx } }, { new: true }))
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

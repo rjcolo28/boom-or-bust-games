@@ -11,7 +11,7 @@ class Nav extends Component {
         <nav>
           <div className="nav-wrapper">
             <a href="/" className="brand-logo">
-              Logo
+              <img id="logo" alt= "logo" href="games-reloaded/client/public/favicon.ico"></img>
             </a>
             <form action="" method="post">
               <div className="input-field">
