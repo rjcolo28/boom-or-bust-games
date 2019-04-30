@@ -30,14 +30,18 @@
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^7.0.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.16.4",
+    "if-env": "^1.0.4",
     "mongoose": "^5.5.1",
     "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "react-awesome-modal": "^2.0.5",
     "react-materialize": "^3.1.1"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "if-env": "^1.0.4"
+    "nodemon": "^1.18.7"
   }
 }
