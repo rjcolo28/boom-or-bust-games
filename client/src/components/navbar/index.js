@@ -87,7 +87,7 @@ class Nav extends Component {
         <nav>
           <div className="nav-wrapper">
             <a href="/" className="brand-logo">
-              <img id="logo" alt="logo" href={logo}></img>
+              Boom or Bust Games
             </a>
             <form action="" method="post">
               <div className="input-field">

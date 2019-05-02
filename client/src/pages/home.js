@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import Nav from "../components/navbar/index";
 import Card from "../components/game card/index"
 import API from "../utils/API";
+import logo from "./logo.png"
 
 
 
 const jumbotronStyle = {
+  backgroundImage: "url(" + logo + ")",
   paddingBottom: '150px',
   boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)"
 }
@@ -62,7 +64,7 @@ class Home extends Component {
         <div className="card-panel grey lighten-2" style={jumbotronStyle}>
           <div className="container">
             <h1>Welcome</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur...</p>
+            <h5>Is your favorite game Booming the market, or a total Bust? Find what everyone else thinks here!</h5>
           </div>
         </div>
         {this.state.games.map(game => 
