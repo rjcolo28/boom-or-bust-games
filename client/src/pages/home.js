@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import Nav from "../components/navbar/index";
 import Card from "../components/game card/index"
 import API from "../utils/API";
-import axios from "axios";
+import logo from "./logo.png"
+
 
 
 const jumbotronStyle = {
+  backgroundImage: "url(" + logo + ")",
   paddingBottom: '150px',
   boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)"
 }
@@ -19,13 +21,13 @@ class Home extends Component {
       games: []
     }
 
-    this.getUser = this.getUser.bind(this)
+    // this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     this.updateUser = this.updateUser.bind(this)
   }
 
   componentDidMount() {
-    this.getUser();
+    // this.getUser();
     API.getGames(this.props)
     .then(res => this.setState({ games: res.data }))
     .catch(err => console.log(err));
@@ -35,26 +37,26 @@ class Home extends Component {
     this.setState(userObject)
   }
 
-  getUser() {
-    axios.get('/user/').then(response => {
-      console.log('Get user response: ')
-      console.log(response.data)
-      if (response.data.user) {
-        console.log('Get User: There is a user saved in the server session: ')
+  // getUser() {
+  //   axios.get('/user/').then(response => {
+  //     console.log('Get user response: ')
+  //     console.log(response.data)
+  //     if (response.data.user) {
+  //       console.log('Get User: There is a user saved in the server session: ')
 
-        this.setState({
-          loggedIn: true,
-          username: response.data.user.username
-        })
-      } else {
-        console.log('Get user: no user');
-        this.setState({
-          loggedIn: false,
-          username: null
-        })
-      }
-    })
-  }
+  //       this.setState({
+  //         loggedIn: true,
+  //         username: response.data.user.username
+  //       })
+  //     } else {
+  //       console.log('Get user: no user');
+  //       this.setState({
+  //         loggedIn: false,
+  //         username: null
+  //       })
+  //     }
+  //   })
+  // }
   render() {
     return (
       <div>
@@ -62,7 +64,7 @@ class Home extends Component {
         <div className="card-panel grey lighten-2" style={jumbotronStyle}>
           <div className="container">
             <h1>Welcome</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur...</p>
+            <h5>Is your favorite game Booming the market, or a total Bust? Find what everyone else thinks here!</h5>
           </div>
         </div>
         {this.state.games.map(game => 
