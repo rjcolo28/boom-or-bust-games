@@ -5,9 +5,10 @@ const gamesController = require("../../controllers/gameController");
 router.route("/")
   .get(gamesController.findAll)
 
-router
-  .route("/:id")
+router.route("/info/:id")
   .get(gamesController.findById)
-  .put(gamesController.update)
+
+router.route("/populate/:id")
+  .get(gamesController.populate)
 
 module.exports = router;
