@@ -1,6 +1,6 @@
 // const User = require("../../models/user");
-const mongoose = require("mongoose");
-var User = mongoose.model('User')
+// const mongoose = require("mongoose");
+// var User = mongoose.model('User')
 // const UserSession = require("../../models/UserSession");
 const router = require("express").Router();    
 const signupController = require("../../controllers/signupController");

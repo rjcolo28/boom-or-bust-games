@@ -6,19 +6,21 @@ import {
     setInStorage
 } from "../utils/storage";
 import API from "../utils/API";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class SignUp extends Component {
     state = {
-        signUpUsername: "",
-        signUpPassword: "",
+        username: "",
+        password: "",
         signUpError: "",
-        isLoading: ""
+        isLoading: "",
+        redirect: ""
     }
 
 
     componentDidMount() {
         // this.verify();
-        this.signUp();
+        // this.loadUser();
     }
 
     verify = () => {
@@ -49,8 +51,8 @@ class SignUp extends Component {
         }
     }
 
-    signUp = () => {
-
+    loadUser = () => {
+        API.getUser()
     }
 
     handleChange = event => {
@@ -59,23 +61,30 @@ class SignUp extends Component {
             [name]: value
         });
     }
-    handleSubmit() {
+    handleSubmit = event => {
         // post request to back end
-        API.newUser().then(res => res.json())
-            .then(json => {
-                if (json.success) {
-                    this.setState({
-                        signUpError: json.message,
-                        isLoading: false
-                    })
-                } else {
-                    this.setState({
-                        signUpError: json.message,
-                        isLoading: false,
-                    })
-                }
-            })
-    }
+        API.newUser({
+            username: this.state.username,
+            password: this.state.password
+        })
+        .then(response => {
+            if(response.err) {
+                alert("Server Error")
+            }
+        })
+            // .then(json => {
+            //     if (json.success) {
+            //         this.setState({
+            //             loadUserError: json.message,
+            //             isLoading: false
+            //         })
+            //     } else {
+            //         this.setState({
+            //             signUpError: json.message,
+            //             isLoading: false,
+            //         })
+            //     }
+            }
 
     render() {
         return (
@@ -83,14 +92,14 @@ class SignUp extends Component {
                 <Nav />
                 <div className="container">
                     <FormUser
-                        value={this.state.signUpUsername}
+                        value={this.state.username}
                         onChange={this.handleChange}
-                        name="signUpUsername"
+                        name="username"
                     />
                     <FormPassword
-                        value={this.state.signUpPassword}
+                        value={this.state.password}
                         onChange={this.handleChange}
-                        name="signUpPassword"
+                        name="password"
                     />
                     <Button
                         onClick={this.handleSubmit}
