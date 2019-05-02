@@ -3,8 +3,9 @@ const db = require("../models");
 
 module.exports = {
     create: function(req, res) {
+        console.log("presave", req.body)
         db.User
-          .create(req.body)
+          .create({ username: req.body.username, password: req.body.password})
           .then(dbUser => res.json(dbUser))
           .catch(err => res.status(422).json(err));
     },

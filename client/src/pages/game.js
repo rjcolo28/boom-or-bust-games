@@ -40,7 +40,6 @@ class GamePage extends Component {
     };
 
     handleFormSubmit = event => {
-        event.preventDefault();
         if(this.state.review) {
             API.submitReview({
                 game_id: this.state.game._id,

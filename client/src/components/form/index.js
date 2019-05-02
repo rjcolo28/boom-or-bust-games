@@ -32,7 +32,7 @@ export function FormPassword(props) {
 
 export function Button(props) {
     return (
-        <button className="btn waves-effect waves-light" type="submit" name="action" {...props}> {props.children}Submit
+        <button className="btn waves-effect waves-light" href="/login" type="submit" name="action" {...props}> {props.children}Submit
             <i className="material-icons right">send</i>
         </button>
     )
