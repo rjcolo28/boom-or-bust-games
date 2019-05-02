@@ -1,11 +1,12 @@
-/* .card{
-    padding: 24px;
-    border-radius: 0 0 2px 2px;
+#gameCard{
+    margin: 60px;
     width: 25%;
+    height: 500px;
     float: left;
+    align-content: center;
 }
 
-.card .card-image img {
+#gameCardImg img {
     height: 250px;
     width: 100%;
-} */
+}
