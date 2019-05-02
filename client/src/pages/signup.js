@@ -1,25 +1,101 @@
 import React, { Component } from "react";
 import Nav from "../components/navbar/index";
-import Form from "../components/form/index";
-
-
-// Allie changed to class SignUp (used to be Home...was confusing...lol)
-
-// i was using a modal before for the sign up 
-
-// yeah so now it's just a form page? yep nothing wrong with that, right? if you're asking if it works. it does, yeah let's make sure you have something functioning before you try to make it "fancy" in a modal or however it looks "ideally" 
-
-// alright .. so where is this signup part breaking? it's not breaking anymore. im just trying to send the info to the mongo database . ahh okay we need to check the routes to make sure you're creating a new user in the db ok let me check some more code now that I know what to look for, we'll delete these comments when we're done, but keep them here for now for reference :P
-
-// ok
+import { FormUser, FormPassword, Button } from "../components/form";
+import {
+    getFromStorage,
+    setInStorage
+} from "../utils/storage";
+import API from "../utils/API";
 
 class SignUp extends Component {
-  
+    state = {
+        signUpUsername: "",
+        signUpPassword: "",
+        signUpError: "",
+        isLoading: ""
+    }
+
+
+    componentDidMount() {
+        // this.verify();
+        this.signUp();
+    }
+
+    verify = () => {
+        const obj = getFromStorage("main_app");
+
+        if (obj && obj.token) {
+            const { token } = obj;
+            //   verity token
+            API.verify("/api/account/verify?token=" + token)
+                .then(res => res.text())
+                .then(json => {
+                    if (json.success) {
+                        this.setState({
+                            token: token,
+                            isLoading: false
+                        })
+                    } else {
+                        this.setState({
+                            isLoading: false
+                        })
+                    }
+                })
+        }
+        else {
+            this.setState({
+                isLoading: false,
+            })
+        }
+    }
+
+    signUp = () => {
+
+    }
+
+    handleChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    }
+    handleSubmit() {
+        // post request to back end
+        API.newUser().then(res => res.json())
+            .then(json => {
+                if (json.success) {
+                    this.setState({
+                        signUpError: json.message,
+                        isLoading: false
+                    })
+                } else {
+                    this.setState({
+                        signUpError: json.message,
+                        isLoading: false,
+                    })
+                }
+            })
+    }
+
     render() {
         return (
             <div>
                 <Nav />
-                <Form />
+                <div className="container">
+                    <FormUser
+                        value={this.state.signUpUsername}
+                        onChange={this.handleChange}
+                        name="signUpUsername"
+                    />
+                    <FormPassword
+                        value={this.state.signUpPassword}
+                        onChange={this.handleChange}
+                        name="signUpPassword"
+                    />
+                    <Button
+                        onClick={this.handleSubmit}
+                    />
+                </div>
             </div>
         );
     }

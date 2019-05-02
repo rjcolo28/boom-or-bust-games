@@ -20,13 +20,16 @@ export default {
         return axios.post("/api/reviews", reviewData)
     },
     newUser: function(){
-        return axios.post("/api/newUser")
+        return axios.post("api/users/signup")
     },
     logout: function(){
         return axios.post("/api/logout")
     },
     signin: function(){
         return axios.post("/api/signin")
+    },
+    verify: function(token){
+        return axios.post("/api/account/verify?token=" + token)
     }
 
 };

@@ -5,7 +5,7 @@ const reviewsRoutes = require("./reviews");
 
 
 router.use("/games", gamesRoutes);
-router.use("/users", signinRoutes);
+router.use("/user", signinRoutes);
 router.use("/reviews", reviewsRoutes);
 
 module.exports = router;

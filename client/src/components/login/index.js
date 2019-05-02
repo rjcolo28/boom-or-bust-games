@@ -5,6 +5,7 @@ import {
     getFromStorage,
     setInStorage
 } from "../../utils/storage";
+import API from "../../utils/API";
 
 class loginForm extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class loginForm extends Component {
             password: "",
             RedirectTo: null,
             signInError: "",
-            isLoading: ""
+            isLoading: "",
+            token: {}
         }
         this.handleFormSubmition = this.handleFormSubmition.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -25,8 +27,8 @@ class loginForm extends Component {
         if (obj && obj.token) {
             const {token} = obj;
             //   verity token
-            fetch("/api/account/verify?token=" + token)
-                .then(res => res.json())
+            API.verify(token)
+                .then(res => res.text())
                 .then(json => {
                     if (json.success) {
                         this.setState({
@@ -54,11 +56,11 @@ class loginForm extends Component {
     }
 
     handleFormSubmition = event => {
-        event.preventDefault();
+        event.preventDefault(); 
         // grab state
         const {
-            signUpPassword,
-            signUpUsername
+            password,
+            username
         } = this.state;
         // post request to back end
         fetch("/api/account/signin", {
@@ -67,8 +69,8 @@ class loginForm extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: signUpUsername,
-                password: signUpPassword
+                username: username,
+                password: password
             }),
         }).then(res => res.json())
             .then(json => {
